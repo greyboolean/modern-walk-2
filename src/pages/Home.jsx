@@ -6,12 +6,14 @@ import CategoryGrid from "../components/CategoryGrid/CategoryGrid";
 
 function Home() {
 	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchProducts = async () => {
 			const products = await getAllProducts();
 			if (products) {
 				setProducts(products);
+				setLoading(false);
 			}
 		};
 
@@ -20,7 +22,7 @@ function Home() {
 
 	return (
 		<div>
-			<Section heading="Flash Sale">
+			<Section heading="Flash Sale" loading={loading}>
 				<ProductGrid products={products.slice(0, 4)} />
 			</Section>
 			<Section heading="Categories">
