@@ -1,5 +1,6 @@
 .section {
   margin-bottom: 3rem;
+  min-height: 428px;
 }
 
 .heading {
