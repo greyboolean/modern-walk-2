@@ -1,24 +1,10 @@
-import { useState, useEffect } from "react";
-import { getAllProducts } from "../api/products";
+import useProducts from "../hooks/useProducts";
 import Section from "../components/Section/Section";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 import CategoryGrid from "../components/CategoryGrid/CategoryGrid";
 
 function Home() {
-	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState(true);
-
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const products = await getAllProducts();
-			if (products) {
-				setProducts(products);
-				setLoading(false);
-			}
-		};
-
-		fetchProducts();
-	}, []);
+	const { products, loading } = useProducts();
 
 	return (
 		<div>
